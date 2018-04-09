@@ -1,0 +1,13 @@
+{
+    "name": "zul/sisop",
+    "description": "backend para sistemas operativos",
+    "require": {
+        "ext-mysqli": "^7.0"
+    },
+    "authors": [
+        {
+            "name": "Baruc Almaguer",
+            "email": "baruc.almaguer@gmail.com"
+        }
+    ]
+}
