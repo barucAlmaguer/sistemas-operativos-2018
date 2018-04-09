@@ -12,7 +12,7 @@ $db = substr($url["path"], 1);
 
 $conn = new mysqli($server, $username, $password, $db);
 
-$sql = "SELECT * FROM USUARIOS WHERE username = '".$json_obj->{'username'}."'";
+$sql = "SELECT * FROM USUARIOS WHERE username = '".$json_obj->{'username'}."' AND password = '".$json_obj->{'password'}."'";
 $result = $conn->query($sql);
 $outp = $result->fetch_all(MYSQLI_ASSOC);
 echo json_encode($outp) ;
