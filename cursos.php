@@ -12,9 +12,11 @@ $db = substr($url["path"], 1);
 
 $conn = new mysqli($server, $username, $password, $db);
 
-$sql = "SELECT materias.clave, materias.semestre, materias.nombre, materias2.nombre as requiere 
-        FROM materias
-        join materias as materias2 on materias.requires = materias2.clave";
+$sql = "SELECT cursos.id_curso as curso, materias.nombre as materia, maestros.nombre as maestro, frecuencias.diaSemana as frecuencia, cursos.horaInicio, cursos.horaFin
+        FROM cursos
+        inner join materias on cursos.clave_materia = materias.clave
+        inner join maestros on cursos.maestro = maestros.id_maestros
+        inner join frecuencias on cursos.frecuencia = frecuencias.id_frecuencias";
 $result = $conn->query($sql);
 $outp = $result->fetch_all(MYSQLI_ASSOC);
 echo json_encode($outp) ;
