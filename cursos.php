@@ -12,7 +12,7 @@ $db = substr($url["path"], 1);
 
 $conn = new mysqli($server, $username, $password, $db);
 
-$sql = "SELECT cursos.id_curso as curso, materias.nombre as materia, maestros.nombre as maestro, frecuencias.diaSemana as frecuencia, cursos.horaInicio, cursos.horaFin
+$sql = "SELECT cursos.id_curso as curso, cursos.grupo, materias.nombre as materia, maestros.nombre as maestro, frecuencias.diaSemana as frecuencia, cursos.horaInicio, cursos.horaFin
         FROM cursos
         inner join materias on cursos.clave_materia = materias.clave
         inner join maestros on cursos.maestro = maestros.id_maestros
