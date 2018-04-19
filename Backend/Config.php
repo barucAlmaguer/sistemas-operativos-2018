@@ -1,6 +1,8 @@
 <?php
-$db_username = "root";
-$db_password = "1234";
-$db_host = "localhost";
-$db_name = "testApp";
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db_name = substr($url["path"], 1);
 ?>
