@@ -20,7 +20,7 @@ class DbOperation{
     function getMaterias(){
       $sql = "SELECT materias.clave, materias.semestre, materias.nombre, materias2.nombre AS requiere
               FROM materias
-              JOIN materias AS materias2 ON materias.requires = materias2.clave";
+              LEFT JOIN materias AS materias2 ON materias.requires = materias2.clave";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute();
       $result = $stmt->get_result();
