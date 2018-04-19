@@ -10,7 +10,7 @@ $dbo = new DbOperation();
 
 $result = $dbo->getUsers("zul", "1234");
 $outp = array();
-$outp['users'] = $result->fetch_all(MYSQLI_ASSOC);
+$outp['usuarios'] = $result->fetch_all(MYSQLI_ASSOC);
 
 echo json_encode($outp);
 $result->free();
