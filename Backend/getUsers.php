@@ -8,7 +8,7 @@ $password = $json_obj->{'password'};
 require_once "DbOperation.php";
 $dbo = new DbOperation();
 
-$result = $dbo->getUsers("1635501", "404101");
+$result = $dbo->getUsers("zul", "1234");
 
 $outp = $result->fetch_all(MYSQLI_ASSOC);
 
