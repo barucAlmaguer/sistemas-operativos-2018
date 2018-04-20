@@ -17,11 +17,12 @@ class DbOperation{
       return  $result;
     }
 
-    function getMaterias(){
+    function getMaterias($semestre){
       $sql = "SELECT materias.clave, materias.semestre, materias.nombre, materias2.nombre AS requiere
-              FROM materias
-              LEFT JOIN materias AS materias2 ON materias.requires = materias2.clave";
+              FROM materias LEFT JOIN materias AS materias2 ON materias.requires = materias2.clave
+              WHERE materias.semestre = ?";
       $stmt = $this->conn->prepare($sql);
+      $stmt->bind_param("s", $semestre);
       $stmt->execute();
       $result = $stmt->get_result();
       return  $result;
