@@ -7,7 +7,7 @@ $semestre = $json_obj->{'semestre'};
 require_once "DbOperation.php";
 $dbo = new DbOperation();
 
-$result = $dbo->getMaterias("1");
+$result = $dbo->getMaterias($semestre);
 $outp = $result->fetch_all(MYSQLI_ASSOC);
 
 echo json_encode($outp);
