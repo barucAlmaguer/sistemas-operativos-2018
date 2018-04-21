@@ -29,22 +29,22 @@ class DbOperation{
     }
 
     function getCursos($materia){
-      $sql = "select
-    		cursos.id_curso as id,
-    		concat( maestros.nombre, " ", maestros.apellidopaterno, " ", maestros.apellidomaterno ) as "maestro",
-    		materias.nombre as materia,
+      $sql = "SELECT
+    		cursos.id_curso AS id,
+    		concat( maestros.nombre, ' ', maestros.apellidopaterno, ' ', maestros.apellidomaterno ) as maestro,
+    		materias.nombre AS materia,
     		cursos.semestre,
-    		cursos.grupo as grupo,
+    		cursos.grupo AS grupo,
     		frecuencias.diasemana,
     		cursos.horainicio,
     		cursos.horafin
-    	from
+    	FROM
     		cursos
-    	inner join maestros on
+    	INNER join maestros ON
     		cursos.maestro = maestros.matricula
-    	inner join materias on
+    	INNER JOIN materias ON
     		cursos.materia = materias.clave
-    	inner join frecuencias on
+    	INNER JOIN frecuencias ON
     		cursos.frecuencia = frecuencias.id_frecuencias";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute();
