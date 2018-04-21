@@ -34,8 +34,9 @@ FROM cursos
 INNER JOIN materias ON materias.clave = cursos.materia
 INNER JOIN maestros ON maestros.matricula = cursos.maestro
 INNER JOIN frecuencias ON frecuencias.id_frecuencias = cursos.frecuencia
-WHERE cursos.materia = 101";
+WHERE cursos.materia = ?";
       $stmt = $this->conn->prepare($sql);
+      $stmt->bind_param("i", $materia);
       $stmt->execute();
       $result = $stmt->get_result();
       return  $result;
