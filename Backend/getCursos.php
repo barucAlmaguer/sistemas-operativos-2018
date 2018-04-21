@@ -8,8 +8,7 @@ require_once "DbOperation.php";
 $dbo = new DbOperation();
 
 $result = $dbo->getUsers($materia);
-$outp = array();
-$outp['usuarios'] = $result->fetch_all(MYSQLI_ASSOC);
+$outp = $result->fetch_all(MYSQLI_ASSOC);
 
 echo json_encode($outp);
 $result->free();
