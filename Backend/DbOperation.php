@@ -29,9 +29,10 @@ class DbOperation{
     }
 
     function getCursos($materia){
-      $sql = "SELECT cursos.grupo, materias.nombre, cursos.horaInicio, cursos.horaFin
+      $sql = "SELECT cursos.grupo, maestros.nombre, cursos.horaInicio, cursos.horaFin
 FROM cursos
 INNER JOIN materias ON materias.clave = cursos.materia
+INNER JOIN maestros ON maestros.matricula = cursos.maestro
 WHERE cursos.materia = 101";
       $stmt = $this->conn->prepare($sql);
       $stmt->execute();
