@@ -29,11 +29,8 @@ class DbOperation{
     }
 
     function getCursos($materia){
-      $sql = "SELECT grupo, maestro, diasemana, horainicio, horafin FROM vista_cursos
-              INNER JOIN materias ON materias.nombre = vista_cursos.materia
-              WHERE materias.clave = ?";
+      $sql = "SELECT * FROM CURSOS;";
       $stmt = $this->conn->prepare($sql);
-      $stmt->bind_param("i", $materia);
       $stmt->execute();
       $result = $stmt->get_result();
       return  $result;
