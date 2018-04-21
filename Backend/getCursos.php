@@ -7,7 +7,7 @@ $materia = $json_obj->{'materia'};
 require_once "DbOperation.php";
 $dbo = new DbOperation();
 
-$result = $dbo->getUsers($materia);
+$result = $dbo->getUsers(101);
 $outp = $result->fetch_all(MYSQLI_ASSOC);
 
 echo json_encode($outp);
