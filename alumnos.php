@@ -12,10 +12,11 @@ $db = substr($url["path"], 1);
 
 $conn = new mysqli($server, $username, $password, $db);
 $materia = $_GET['materia'];
-$sql = "SELECT materiaestudiantes.materia_id, estudiantes.matricula, estudiantes.nombre
-        from materiaestudiantes
-        inner join estudiantes on materiaestudiantes.estudiantes_id = estudiantes.id_estudiante
-        where materiaestudiantes.materia_id ='$materia'";
+$sql = "SELECT i.matricula, e.nombre, c.materia, m.nombre, c.maestro, c.grupo, c.horaInicio, c.horaFin from inscripciones as i
+        inner join cursos as c on c.id_curso = i.curso
+        inner join materias as m on m.clave = c.materia
+        inner join estudiantes as e on e.matricula = i.matricula
+        where m.clave = '$materia'";
 
 $result = $conn->query($sql);
 $outp = $result->fetch_all(MYSQLI_ASSOC);
