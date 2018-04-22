@@ -10,11 +10,14 @@ $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
 
+
+
 $conn = new mysqli($server, $username, $password, $db);
 
 $sql = "select materiaestudiantes.materia_id, estudiantes.matricula, estudiantes.nombre
         from materiaestudiantes
-        inner join estudiantes on materiaestudiantes.estudiantes_id = estudiantes.id_estudiante";
+        inner join estudiantes on materiaestudiantes.estudiantes_id = estudiantes.id_estudiante
+        WHERE materiaestudiantes.materia_id = 2";
 $result = $conn->query($sql);
 $outp = $result->fetch_all(MYSQLI_ASSOC);
 echo json_encode($outp) ;
