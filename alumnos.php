@@ -12,7 +12,7 @@ $db = substr($url["path"], 1);
 
 $conn = new mysqli($server, $username, $password, $db);
 
-$sql = "select estudiantes.matricula, estudiantes.nombre
+$sql = "select materiaestudiantes.materia_id, estudiantes.matricula, estudiantes.nombre
         from materiaestudiantes
         inner join estudiantes on materiaestudiantes.estudiantes_id = estudiantes.id_estudiante";
 $result = $conn->query($sql);
