@@ -12,7 +12,7 @@ $db = substr($url["path"], 1);
 
 $conn = new mysqli($server, $username, $password, $db);
 $materia = $_GET['materia'];
-$sql = "SELECT i.matricula, e.nombre, c.materia, m.nombre, c.maestro, c.grupo, c.horaInicio, c.horaFin from inscripciones as i
+$sql = "SELECT i.matricula, e.nombre, c.grupo from inscripciones as i
         inner join cursos as c on c.id_curso = i.curso
         inner join materias as m on m.clave = c.materia
         inner join estudiantes as e on e.matricula = i.matricula
