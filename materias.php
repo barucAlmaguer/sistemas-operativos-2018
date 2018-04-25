@@ -14,7 +14,7 @@ $conn = new mysqli($server, $username, $password, $db);
 
 $sql = "SELECT materias.clave, materias.semestre, materias.nombre, materias2.nombre as requiere 
         FROM materias
-        join materias as materias2 on materias.requires = materias2.clave";
+        LEFT JOIN materias as materias2 on materias.requires = materias2.clave";
 $result = $conn->query($sql);
 $outp = $result->fetch_all(MYSQLI_ASSOC);
 echo json_encode($outp) ;
